@@ -3,4 +3,7 @@
     <% docs.forEach(function(doc){ %>
         <h3><a href="/<%= doc.id %>"><%= doc.title %></a></h3>
     <% }); %>
+    <form method="POST" action="/add" class="new-doc">
+        <input type="submit" value="Nytt dokument" />
+    </form>
 <%- include('includes/footer'); %>

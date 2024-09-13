@@ -1,6 +1,6 @@
 import 'dotenv/config'
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000; // If process.env.PORT is undefined, then it defaults to 3000
 
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -31,6 +31,12 @@ app.post("/", async (req, res) => {
     const result = await documents.addOne(req.body);
 
     return res.redirect(`/${result.lastID}`);
+});
+
+app.post("/update", async (req, res) => {
+    const result = await documents.updateOne(req.body);
+
+    return res.redirect(`/`);
 });
 
 app.get('/:id', async (req, res) => {
