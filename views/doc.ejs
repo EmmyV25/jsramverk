@@ -6,7 +6,8 @@
 
         <label for="content">Innehåll</label>
         <textarea name="content"><%= doc.content %></textarea>
-
+        
+        <input type="hidden" value="<%= id %>" name="id">
         <input type="submit" value="Uppdatera" />
     </form>
 <%- include('includes/footer'); %>

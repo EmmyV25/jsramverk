@@ -33,16 +33,22 @@ app.post("/", async (req, res) => {
     return res.redirect(`/${result.lastID}`);
 });
 
-app.post("/update", async (req, res) => {
-    const result = await documents.updateOne(req.body);
+app.get("/doc", async (req, res) => {
+    return res.render("doc");
+});
 
-    return res.redirect(`/`);
+app.post("/update", async (req, res) => {
+    await documents.updateOne(req.body);
+
+    return res.redirect(`/${req.body.id}`);
 });
 
 app.get('/:id', async (req, res) => {
     return res.render(
         "doc",
-        { doc: await documents.getOne(req.params.id) }
+        { doc: await documents.getOne(req.params.id),
+            id: req.params.id
+        }
     );
 });
 
