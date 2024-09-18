@@ -27,7 +27,7 @@ if (process.env.NODE_ENV !== 'test') {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post("/", async (req, res) => {
+app.post("/doc", async (req, res) => {
     const result = await documents.addOne(req.body);
 
     return res.redirect(`/${result.lastID}`);
